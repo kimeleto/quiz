@@ -12,10 +12,13 @@ router.get('/author', function(req, res) {
   res.render('author');
 });
 
+// GET a la pagina de la lista de preguntas.
+router.get('/quizes', quizController.index);
+
 // GET a la pagina de la pregunta.
-router.get('/quizes/question', quizController.question);
+router.get('/quizes/:quizId(\\d+)', quizController.show);
 
 // GET a la pagina de la respuesta.
-router.get('/quizes/answer', quizController.answer);
+router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
 module.exports = router;
