@@ -14,9 +14,19 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res) {
-	models.Quiz.findAll().then(
+	var search = "%";
+
+	if(req.query.search){
+		search = "%" + req.query.search.replace(" ", "%") + "%";
+	}
+
+	models.Quiz.findAll({where: ["pregunta like ?", search]}).then(
 		function(quizes){
-			res.render('quizes/index', {quizes: quizes});
+			var mensaje = "";
+			if (quizes.length === 0) {
+				mensaje = "</br>No se han encontrado preguntas que cumplan el criterio de busqueda.";
+			}
+			res.render('quizes/index', {quizes: quizes, mensaje: mensaje});
 		}
 	).catch(function(error) {next(error);});
 };
