@@ -39,6 +39,12 @@ sequelize.sync().success(function() {
       Quiz.create({pregunta: 'Capital de Italia',
                    respuesta: 'Roma'
                  });
+      Quiz.create({pregunta: "Donde se halla el municipio italiano de Campione d'Italia",
+                  respuesta: 'Suiza'
+                });
+                Quiz.create({pregunta: "Por que pueblo fue fundada la ciudad de Badalona",
+                  respuesta: 'Romano'
+                });
       Quiz.create({pregunta: 'Capital de Portugal',
                    respuesta: 'Lisboa'
                   })
