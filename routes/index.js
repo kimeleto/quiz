@@ -25,4 +25,10 @@ router.get('/quizes/:quizId(\\d+)', quizController.show);
 // GET a la pagina de la respuesta.
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 
+// GET a la pagina del formulario de introducion de nuevas preguntas.
+router.get('/quizes/new', quizController.new);
+
+// POST que introduce la nueva pregunta en la BD y redirecciona a la lista de preguntas.
+router.post('/quizes/create', quizController.create);
+
 module.exports = router;
